@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/multi-wordle/',
+  base: '/wordmain-expansion/',
   plugins: [react()],
   test: {
     environment: 'jsdom',
