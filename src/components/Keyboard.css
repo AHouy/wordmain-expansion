@@ -1,0 +1,110 @@
+.keyboard {
+  height: auto;
+  min-height: 200px;
+  margin: 0 8px;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 20px;
+}
+
+.keyboard-row {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  touch-action: manipulation;
+  gap: 6px;
+}
+
+.key-container {
+  position: relative;
+  font-family: inherit;
+  font-weight: bold;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  height: 58px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  background-color: var(--key-bg);
+  color: var(--key-text);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.3);
+  transition: transform 0.1s, background-color 0.2s;
+  max-width: 43px;
+  overflow: hidden;
+}
+
+.key-container:active {
+  transform: scale(0.95);
+}
+
+.key-container.large {
+  flex: 1.5;
+  font-size: 12px;
+  max-width: 65px;
+}
+
+/* When any key is guessed, the base becomes dark grey */
+.key-container.guessed {
+  background-color: var(--darkGray);
+}
+
+.key-text {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* The grid inside the key styling */
+.key-grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  z-index: 1;
+  pointer-events: none;
+  gap: 1px; /* tiny gap between segments */
+}
+
+.key-grid-cell {
+  background-color: transparent;
+}
+
+/* For multi-board, correct/present blocks fill their quadrant/cell */
+.key-grid-cell.correct {
+  background-color: var(--green);
+}
+.key-grid-cell.present {
+  background-color: var(--yellow);
+}
+
+/* For single board fallback */
+.key-single-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.key-single-overlay.correct {
+  background-color: var(--green);
+}
+.key-single-overlay.present {
+  background-color: var(--yellow);
+}
+.key-single-overlay.absent {
+  background-color: var(--darkGray);
+}

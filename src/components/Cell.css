@@ -1,0 +1,96 @@
+.cell {
+  width: 100%;
+  aspect-ratio: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  vertical-align: middle;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  perspective: 1000px;
+}
+
+.cell-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.cell.flipped .cell-inner {
+  transform: rotateX(-180deg);
+}
+
+.cell-front, .cell-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  border: 2px solid var(--cell-border);
+}
+
+.cell.filled .cell-front {
+  border-color: var(--gray);
+  animation: pop 0.1s;
+}
+
+.cell-back {
+  transform: rotateX(180deg);
+  border: none;
+  color: var(--white);
+}
+
+.cell-back.correct {
+  background-color: var(--green);
+}
+
+.cell-back.present {
+  background-color: var(--yellow);
+}
+
+.cell-back.absent {
+  background-color: var(--darkGray);
+}
+
+/* Disable Animations and GPU Compositing for high board counts */
+.massive-boards .cell {
+  perspective: none !important;
+}
+
+.massive-boards .cell-inner {
+  transition: none !important;
+  transform-style: flat !important;
+  transform: none !important;
+}
+
+.massive-boards .cell.filled .cell-front {
+  animation: none !important;
+}
+
+.massive-boards .cell-front, 
+.massive-boards .cell-back {
+  backface-visibility: visible !important;
+}
+
+.massive-boards .cell-back {
+  transform: none !important;
+  z-index: 1;
+}
+
+.massive-boards .cell-front {
+  z-index: 2;
+  background-color: var(--darkishGray); /* Match standard bg */
+}
+
+.massive-boards .cell.flipped .cell-front {
+  display: none !important;
+}

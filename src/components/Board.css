@@ -1,0 +1,47 @@
+.board {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(auto, 1fr));
+  grid-gap: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+}
+
+.row.shake {
+  animation: shake 0.6s;
+}
+
+.board.solved {
+  opacity: 0.7;
+}
+
+.solved-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--green);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Disable Animations for high board counts */
+.massive-boards .row.shake {
+  animation: none !important;
+}
