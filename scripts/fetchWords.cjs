@@ -64,7 +64,8 @@ async function run() {
   }
 
   const jsContent = `export const VALID_WORDS = ${JSON.stringify(validWords)};\n\nexport const TARGET_WORDS = ${JSON.stringify(targetWords)};\n`;
-  fs.writeFileSync("/Users/sothearo/.gemini/antigravity/scratch/multi-wordle/src/utils/words.js", jsContent);
+  const path = require("path");
+  fs.writeFileSync(path.join(__dirname, "../src/utils/words.js"), jsContent);
   console.log("Dictionary updated with " + targetWords.length + " common target words and " + validWords.length + " total valid words.");
 }
 

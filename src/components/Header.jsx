@@ -5,7 +5,7 @@ export function Header({ onOpenSettings }) {
   return (
     <header className="header">
       <div className="header-left"></div>
-      <h1 className="title">Multi-Wordle</h1>
+      <h1 className="title">Wordmain Expansion</h1>
       <div className="header-right">
         <button className="icon-button" onClick={onOpenSettings} aria-label="Settings">
           <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
